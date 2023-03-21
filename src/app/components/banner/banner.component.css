@@ -1,0 +1,11 @@
+#banner {
+    background-image: url(../../../assets/banner.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100%;
+}
+
+#banner-texto {
+    background-color: rgba(0, 0, 0, 0.5);
+}
