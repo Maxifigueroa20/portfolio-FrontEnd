@@ -36,7 +36,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule,
     NgCircleProgressModule.forRoot({
-      radius: 50,
+      radius: 60,
+      maxPercent: 100,
+      startFromZero: false,
       outerStrokeWidth: 6,
       outerStrokeColor: "#ffffff",
       lazy: true,
