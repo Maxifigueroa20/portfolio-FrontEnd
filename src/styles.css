@@ -18,10 +18,29 @@ body {
     background-color: black;
 }
 
-p, h1, h3, span {
+p, i, h1, h3, hr, span {
     color: white;
 }
 
 p {
     line-height: 1.8;
+}
+
+#modulo {
+    border: var(--borde);
+}
+
+#modulo-img {
+    max-height: 80px;
+}
+
+#descripcion {
+    border-left: var(--borde);
+}
+
+@media (max-width: 768px) {
+    #descripcion {
+        border-left: none;
+        border-top: var(--borde);
+    }
 }
