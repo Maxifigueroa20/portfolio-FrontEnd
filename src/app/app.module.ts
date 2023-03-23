@@ -17,6 +17,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ModalProyectoComponent } from './components/proyecto/modal-proyecto/modal-proyecto.component';
+import { ModalAcercaDeComponent } from './components/acerca-de/modal-acerca-de/modal-acerca-de.component';
+import { ModalEducacionComponent } from './components/educacion/modal-educacion/modal-educacion.component';
+import { ModalExperienciaComponent } from './components/experiencia/modal-experiencia/modal-experiencia.component';
+import { ModalHabilidadComponent } from './components/habilidad/modal-habilidad/modal-habilidad.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     HeaderComponent,
     FooterComponent,
-    BannerComponent
+    BannerComponent,
+    ModalProyectoComponent,
+    ModalAcercaDeComponent,
+    ModalEducacionComponent,
+    ModalExperienciaComponent,
+    ModalHabilidadComponent
   ],
   imports: [
     BrowserModule,
