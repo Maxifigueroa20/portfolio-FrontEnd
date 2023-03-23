@@ -3,26 +3,28 @@
     <div class="row border-bottom border-white">
         <div class="col d-flex justify-content-between">
             <h3>Proyectos</h3>
-            <button type="button" class="btn btn-outline-primary mb-2">Agregar</button>
+            <button type="button" class="btn btn-outline-primary mb-2" (click)="onCreate()">Agregar</button>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4 d-flex justify-content-center align-items-center py-4">
-            <img src="https://i.ibb.co/RTcxfDK/AP-Logo.png" class="img-fluid" id="modulo-img" alt="educacion">
-        </div>
-        <div class="col-md-8 d-flex justify-content-center py-3 py-md-0 align-items-center" id="descripcion">
-            <div class="d-flex flex-column">
-                <span class="fw-bold text-center">Argentina Programa - #SeProgramar</span>
-                <span class="mt-3 text-center">2022 ~ 2022</span>
-                <span class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam corrupti deleniti perspiciatis minima, minus illum iusto reprehenderit voluptates cupiditate?</span>
-                <button type="button" class="btn btn-outline-success my-3">Visitar</button>
+    <div *ngFor="let proyecto of proyectos">
+        <div class="row">
+            <div class="col-md-4 d-flex justify-content-center align-items-center py-4">
+                <img src={{proyecto.imagenProyecto}} class="img-fluid" id="modulo-img" alt="educacion">
+            </div>
+            <div class="col-md-8 d-flex justify-content-center py-3 py-md-0 align-items-center" id="descripcion">
+                <div class="d-flex flex-column">
+                    <span class="fw-bold text-center">{{proyecto.tituloProyecto}}</span>
+                    <span class="mt-3 text-center">{{proyecto.fechaProyecto}}</span>
+                    <span class="mt-3">{{proyecto.descripcionProyecto}}</span>
+                    <button type="button" class="btn btn-outline-success my-3">Visitar</button>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col d-grid gap-2 d-md-flex justify-content-md-around pt-3" id="modulo-footer">
-            <button type="button" class="btn btn-outline-warning flex-fill">Editar</button>
-            <button type="button" class="btn btn-outline-danger flex-fill">Borrar</button>
+        <div class="row">
+            <div class="col d-grid gap-2 d-md-flex justify-content-md-around pt-3" id="modulo-footer">
+                <button type="button" class="btn btn-outline-warning flex-fill" (click)="onEdit(proyecto)">Editar</button>
+                <button type="button" class="btn btn-outline-danger flex-fill" (click)="onDelete(proyecto.idProyecto)">Borrar</button>
+            </div>
         </div>
     </div>
 </div>

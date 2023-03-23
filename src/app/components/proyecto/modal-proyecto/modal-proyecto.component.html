@@ -1,1 +1,56 @@
-<p>modal-proyecto works!</p>
+
+
+<div *ngIf="modalMode === 'editar' || modalMode === 'agregar'">
+    <div class="modal-header">
+        <div *ngIf="modalMode === 'editar'">
+            <h4 class="modal-title">Editar Proyecto</h4>
+        </div>
+        <div *ngIf="modalMode === 'agregar'">
+            <h4 class="modal-title">Agregar Proyecto</h4>
+        </div>
+        <button type="button" class="close" aria-label="Close" (click)="cerrarModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form #proyectoForm="ngForm" (ngSubmit)="modalMode === 'editar' ? onEdit() : onCreate()">
+            <div class="form-group">
+                <label for="nombre">Titulo:</label>
+                <input type="text" class="form-control" id="titulo" name="titulo" [(ngModel)]="proyecto.tituloProyecto" required>
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Fecha:</label>
+                <input type="text" class="form-control" id="fecha" name="fecha" [(ngModel)]="proyecto.fechaProyecto" required>
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripcion:</label>
+                <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="proyecto.descripcionProyecto" required>
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Imagen:</label>
+                <input type="text" class="form-control" id="imagen" name="imagen" [(ngModel)]="proyecto.imagenProyecto" required>
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Url:</label>
+                <input type="text" class="form-control" id="url" name="url" [(ngModel)]="proyecto.urlProyecto" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+</div>
+
+
+<div *ngIf="modalMode === 'borrar'">
+    <div class="modal-header">
+        <h4>Borrar Proyecto</h4>
+        <button type="button" class="close" aria-label="Close" (click)="cerrarModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <h5>¿Desea borrar el proyecto?</h5>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" (click)="onDelete()">Borrar</button>
+    </div>
+</div>
