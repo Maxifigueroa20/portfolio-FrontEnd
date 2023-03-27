@@ -1,56 +1,54 @@
-
-
-<div *ngIf="modalMode === 'editar' || modalMode === 'agregar'">
+<div class="rounded" id="modal-container" *ngIf="modalMode === 'editar' || modalMode === 'agregar'">
     <div class="modal-header">
-        <div *ngIf="modalMode === 'editar'">
-            <h4 class="modal-title">Editar Proyecto</h4>
-        </div>
-        <div *ngIf="modalMode === 'agregar'">
-            <h4 class="modal-title">Agregar Proyecto</h4>
-        </div>
-        <button type="button" class="close" aria-label="Close" (click)="cerrarModal()">
-            <span aria-hidden="true">&times;</span>
-        </button>
+        <h4 *ngIf="modalMode === 'agregar'">Agregar Proyecto</h4>
+        <h4 *ngIf="modalMode === 'editar'">Editar Proyecto</h4>
+        <i class="bi bi-x-lg fs-5" (click)="cerrarModal()" aria-label="Close"></i>
     </div>
     <div class="modal-body">
-        <form #proyectoForm="ngForm" (ngSubmit)="modalMode === 'editar' ? onEdit() : onCreate()">
-            <div class="form-group">
-                <label for="nombre">Titulo:</label>
-                <input type="text" class="form-control" id="titulo" name="titulo" [(ngModel)]="proyecto.tituloProyecto" required>
+        <form [formGroup]="modalForm" (ngSubmit)="modalMode === 'editar' ? onEdit() : onCreate()">
+
+            <label for="titulo">Título:</label>
+            <input class="form-control mt-2" id="titulo" type="text" formControlName="tituloProyecto" [ngClass]="{'is-invalid': Titulo?.errors && Titulo?.touched, 'is-valid': !Titulo?.errors && Titulo?.touched}">
+            <div><span class="text-danger" *ngIf="Titulo?.errors && Titulo?.touched">Ingrese un título válido</span></div>
+
+            <label class="mt-2" for="fechaInicio">Fecha de inicio:</label>
+            <input class="form-control mt-2" id="fechaInicio" type="number" formControlName="fechaInicioProyecto" [ngClass]="{'is-invalid': FechaInicio?.errors && FechaInicio?.touched, 'is-valid': !FechaInicio?.errors && FechaInicio?.touched}">
+            <div><span class="text-danger" *ngIf="FechaInicio?.errors && FechaInicio?.touched">Ingrese una fecha de inicio válida</span></div>
+            
+            <label class="mt-2" for="fecha">Fecha de fin:</label>
+            <input class="form-control mt-2" id="fechaFin" type="number" formControlName="fechaFinProyecto" [ngClass]="{'is-invalid': FechaFin?.errors && FechaFin?.touched, 'is-valid': !FechaFin?.errors && FechaFin?.touched}">
+            <div><span class="text-danger" *ngIf="FechaFin?.errors && FechaFin?.touched">Ingrese una fecha válida</span></div>
+
+            <label class="mt-2" for="descripcion">Descripción:</label>
+            <input class="form-control mt-2" id="descripcion" type="text" formControlName="descripcionProyecto" [ngClass]="{'is-invalid': Descripcion?.errors && Descripcion?.touched, 'is-valid': !Descripcion?.errors && Descripcion?.touched}">
+            <div><span class="text-danger" *ngIf="Descripcion?.errors && Descripcion?.touched">Ingrese una descripción válida</span></div>
+
+            <label class="mt-2" for="imagen">Imágen:</label>
+            <input class="form-control mt-2" id="imagen" type="url" formControlName="imagenProyecto" [ngClass]="{'is-invalid': Imagen?.errors && Imagen?.touched, 'is-valid': !Imagen?.errors && Imagen?.touched}">
+            <div><span class="text-danger" *ngIf="Imagen?.errors && Imagen?.touched">Ingrese una imágen válida</span></div>
+
+            <label class="mt-2" for="url">Url:</label>
+            <input class="form-control mt-2" id="url" type="url" formControlName="urlProyecto" [ngClass]="{'is-invalid': Url?.errors && Url?.touched, 'is-valid': !Url?.errors && Url?.touched}">
+            <div><span class="text-danger" *ngIf="Url?.errors && Url?.touched">Ingrese una url válida</span></div>
+
+            <div class="col d-grid gap-2 d-md-flex justify-content-md-around mt-3">
+                <button type="button" class="btn btn-danger flex-fill" (click)="cerrarModal()" aria-label="Close">Cancelar</button>
+                <button type="submit" class="btn flex-fill" id="modal-button" [ngClass]="{'btn-outline-primary': !modalForm.valid, 'btn-primary': modalForm.valid}" [disabled]="!modalForm.valid">Guardar</button>
             </div>
-            <div class="form-group">
-                <label for="descripcion">Fecha:</label>
-                <input type="text" class="form-control" id="fecha" name="fecha" [(ngModel)]="proyecto.fechaProyecto" required>
-            </div>
-            <div class="form-group">
-                <label for="descripcion">Descripcion:</label>
-                <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="proyecto.descripcionProyecto" required>
-            </div>
-            <div class="form-group">
-                <label for="descripcion">Imagen:</label>
-                <input type="text" class="form-control" id="imagen" name="imagen" [(ngModel)]="proyecto.imagenProyecto" required>
-            </div>
-            <div class="form-group">
-                <label for="descripcion">Url:</label>
-                <input type="text" class="form-control" id="url" name="url" [(ngModel)]="proyecto.urlProyecto" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
     </div>
 </div>
 
-
-<div *ngIf="modalMode === 'borrar'">
+<div class="rounded" id="modal-container" *ngIf="modalMode === 'borrar'">
     <div class="modal-header">
         <h4>Borrar Proyecto</h4>
-        <button type="button" class="close" aria-label="Close" (click)="cerrarModal()">
-            <span aria-hidden="true">&times;</span>
-        </button>
+        <i class="bi bi-x-lg fs-5" (click)="cerrarModal()" aria-label="Close"></i>
     </div>
     <div class="modal-body">
-        <h5>¿Desea borrar el proyecto?</h5>
+        <h6>¿Desea borrar el proyecto?</h6>
     </div>
-    <div class="modal-footer">
-        <button class="btn btn-danger" (click)="onDelete()">Borrar</button>
+    <div class="col d-grid gap-2 d-md-flex justify-content-md-around mt-3">
+        <button type="button" class="btn btn-danger flex-fill" (click)="cerrarModal()" aria-label="Close">Cancelar</button>
+        <button type="button" class="btn btn-primary flex-fill" (click)="onDelete()">Borrar</button>
     </div>
 </div>

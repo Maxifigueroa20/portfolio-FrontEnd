@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
+import { EMAIL_PATTERN } from '../portfolio/portfolio.component';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent {
     private authService: AuthService
   ) {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.pattern(EMAIL_PATTERN)]],
       password: ['', [Validators.required, Validators.minLength(5)]]
     })
     this.guestForm = this.formBuilder.group({
@@ -28,11 +29,9 @@ export class LoginComponent {
   }
 
   onLogin() {
-    if (this.loginForm.valid) {
-      this.authService.authenticate(this.loginForm.value).subscribe(() => {
-        this.router.navigate(['/portfolio'])
-      })
-    }
+    this.authService.authenticate(this.loginForm.value).subscribe(() => {
+      this.router.navigate(['/portfolio'])
+    })
   }
 
   onGuestLogin() {

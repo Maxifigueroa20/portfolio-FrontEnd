@@ -18,7 +18,7 @@ body {
     background-color: black;
 }
 
-p, i, h1, h3, hr, span, label {
+p, i, h1, h3, h4, h6, hr, span, label {
     color: white;
 }
 
@@ -40,6 +40,34 @@ p {
 
 #descripcion {
     border-left: var(--borde);
+}
+
+#modal-container {
+    background-color: black;
+    border: var(--borde);
+}
+
+#modal-button {
+    /*transition: 0.5s ease-in-out;*/
+}
+
+.form-control {
+    background-color: inherit !important;
+    border: var(--borde);
+    color: white !important;
+}
+
+.is-valid {
+    border-color: #28a745 !important;
+}
+
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+
+.bi-x-lg {
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {

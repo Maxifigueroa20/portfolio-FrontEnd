@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { MODAL_OPTIONS } from 'src/app/helpers/utils';
 import { Proyecto } from 'src/app/model/proyecto';
 import { AuthService } from 'src/app/service/auth.service';
 import { ProyectoService } from 'src/app/service/proyecto.service';
@@ -32,7 +33,7 @@ export class ProyectoComponent implements OnInit{
   }
 
   onCreate() {
-    const modalRef = this.modalService.open(ModalProyectoComponent)
+    const modalRef = this.modalService.open(ModalProyectoComponent, MODAL_OPTIONS)
     modalRef.componentInstance.modalMode = "agregar";
     modalRef.result.then(() => {
       this.obtenerProyectos();
@@ -40,13 +41,13 @@ export class ProyectoComponent implements OnInit{
   }
 
   onEdit(proyecto: Proyecto) {
-    const modalRef = this.modalService.open(ModalProyectoComponent)
+    const modalRef = this.modalService.open(ModalProyectoComponent, MODAL_OPTIONS)
     modalRef.componentInstance.proyecto = proyecto;
     modalRef.componentInstance.modalMode = "editar";
   }
 
   onDelete(id: number) {
-    const modalRef = this.modalService.open(ModalProyectoComponent)
+    const modalRef = this.modalService.open(ModalProyectoComponent, MODAL_OPTIONS)
     modalRef.componentInstance.proyecto.idProyecto = id;
     modalRef.componentInstance.modalMode = "borrar";
     modalRef.result.then(() => {

@@ -5,19 +5,17 @@
             <h3 class="text-center">Formulario de Inicio de Sesion</h3>
             <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
 
-                <br>
-
-                <label class="form-label" for="email">Email</label>
+                <label class="form-label mt-3" for="email">Email</label>
                 <input class="form-control" type="email" formControlName="email" [ngClass]="{'is-invalid': Email?.errors && Email?.touched, 'is-valid': !Email?.errors && Email?.touched}">
-                <p class="text-danger" *ngIf="Email?.errors && Email?.touched">Ingrese un email valido</p>
+                <div><span class="text-danger" *ngIf="Email?.errors && Email?.touched">Ingrese un email valido</span></div>
 
                 <label class="form-label mt-3" for="password">Password</label>
                 <input class="form-control" type="password" formControlName="password" [ngClass]="{'is-invalid': Password?.errors && Password?.touched, 'is-valid': !Password?.errors && Password?.touched}">
-                <p class="text-danger" *ngIf="Password?.hasError('required') && Password?.touched">Ingrese una contraseña valida</p>
-                <p class="text-danger" *ngIf="Password?.errors?.['minlength']">La contraseña debe tener como minimo 5 caracteres</p>
+                <div><span class="text-danger" *ngIf="Password?.hasError('required') && Password?.touched">Ingrese una contraseña valida</span></div>
+                <div><span class="text-danger" *ngIf="Password?.errors?.['minlength']">La contraseña debe tener como minimo 5 caracteres</span></div>
 
                 <div class="mt-4 d-grid gap-2 col-12 mx-auto">
-                    <button class="btn btn-primary" type="submit">Iniciar sesión</button>
+                    <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid">Iniciar sesión</button>
                     <button class="btn btn-success" type="button" (click)="onGuestLogin()">Ingresar como Invitado</button>
                 </div>
             </form>
