@@ -18,7 +18,7 @@ body {
     background-color: black;
 }
 
-p, i, h1, h3, h4, h6, hr, span, label {
+p, i, h1, h2, h3, h4, h6, hr, span, label {
     color: white;
 }
 
@@ -48,7 +48,7 @@ p {
 }
 
 #modal-button {
-    /*transition: 0.5s ease-in-out;*/
+    transition: 0.5s ease-in-out;
 }
 
 .form-control {

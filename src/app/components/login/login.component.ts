@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { EMAIL_PATTERN } from 'src/app/helpers/utils';
 import { AuthService } from 'src/app/service/auth.service';
-import { EMAIL_PATTERN } from '../portfolio/portfolio.component';
 
 @Component({
   selector: 'app-login',

@@ -19,23 +19,23 @@ export class AuthService {
       const token = response.token;
       const role = response.role;
 
-      localStorage.setItem('token', token);
-      localStorage.setItem('role', role);
+      sessionStorage.setItem('token', token);
+      sessionStorage.setItem('role', role);
       return response;
     }))
   }
 
   public getToken() {
-    return localStorage.getItem('token');
+    return sessionStorage.getItem('token');
   }
 
   public getRole() {
-    return localStorage.getItem('role');
+    return sessionStorage.getItem('role');
   }
 
   public logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('role');
   }
 
   public isAdmin() {
