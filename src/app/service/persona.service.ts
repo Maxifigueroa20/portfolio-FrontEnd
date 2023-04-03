@@ -19,7 +19,7 @@ export class PersonaService {
   }
 
   public buscarPersona(id: number): Observable<Persona> {
-    return this.http.get<Persona>(`${this.apiServerUrl}/api/v1/persona/id/${id}`)
+    return this.http.get<Persona>(`${this.apiServerUrl}/persona/id/${id}`)
   }
 
   public verPersonas(): Observable<Persona[]> {

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MODAL_OPTIONS } from 'src/app/helpers/utils';
 import { Proyecto } from 'src/app/model/proyecto';
 import { AuthService } from 'src/app/service/auth.service';
@@ -16,7 +15,6 @@ export class ProyectoComponent implements OnInit{
   proyectos: Proyecto[] = []
 
   constructor(
-    private router: Router,
     private authService: AuthService,
     private proyectoService: ProyectoService,
     private modalService: NgbModal
@@ -44,6 +42,9 @@ export class ProyectoComponent implements OnInit{
     const modalRef = this.modalService.open(ModalProyectoComponent, MODAL_OPTIONS)
     modalRef.componentInstance.proyecto = proyecto;
     modalRef.componentInstance.modalMode = "editar";
+    modalRef.result.then(() => {
+      this.obtenerProyectos();
+    });
   }
 
   onDelete(id: number) {
@@ -55,13 +56,7 @@ export class ProyectoComponent implements OnInit{
     });
   }
 
-  cerrarSesion() {
-    this.authService.logout();
-    this.router.navigate(['/login'])
-  }
-
   get isAdmin(): Boolean {
     return this.authService.isAdmin();
   }
-
 }

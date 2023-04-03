@@ -3,13 +3,13 @@
     <div class="row">
         <div class="col d-flex justify-content-between">
             <h3>Proyectos</h3>
-            <button type="button" class="btn btn-outline-primary mb-2" (click)="onCreate()">Agregar</button>
+            <button type="button" class="btn btn-outline-primary mb-2" *ngIf="isAdmin" (click)="onCreate()">Agregar</button>
         </div>
     </div>
     <div *ngFor="let proyecto of proyectos">
-        <div class="row border-top border white">
+        <div class="row border-top border-white">
             <div class="col-md-4 d-flex justify-content-center align-items-center py-4">
-                <img src={{proyecto.imagenProyecto}} class="img-fluid" id="modulo-img" alt="educacion">
+                <img src={{proyecto.imagenProyecto}} class="img-fluid" id="modulo-img" alt="proyecto">
             </div>
             <div class="col-md-8 d-flex justify-content-center py-3 py-md-0 align-items-center" id="descripcion">
                 <div class="d-flex flex-column">
@@ -20,15 +20,15 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" *ngIf="isAdmin">
             <div class="col d-grid gap-2 d-md-flex justify-content-md-around py-3" id="modulo-footer">
-                <button type="button" class="btn btn-outline-warning flex-fill" (click)="onEdit(proyecto)">Editar</button>
-                <button type="button" class="btn btn-outline-danger flex-fill" (click)="onDelete(proyecto.idProyecto)">Borrar</button>
+                <button type="button" class="btn btn-outline-warning flex-fill" *ngIf="isAdmin" (click)="onEdit(proyecto)">Editar</button>
+                <button type="button" class="btn btn-outline-danger flex-fill" *ngIf="isAdmin" (click)="onDelete(proyecto.idProyecto)">Borrar</button>
             </div>
         </div>
     </div>
-    <div class="row border-top border light">
-        <div class="col d-flex justify-content-center py-5" *ngIf="proyectos.length === 0">
+    <div class="row border-top border-light" *ngIf="proyectos.length === 0">
+        <div class="col d-flex justify-content-center py-5">
             <h2>¡No hay proyectos aqui!</h2>
         </div>
     </div>

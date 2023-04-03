@@ -57,6 +57,10 @@ p {
     color: white !important;
 }
 
+.form-range::-webkit-slider-runnable-track {
+    background-color: #242424 !important;
+}
+
 .is-valid {
     border-color: #28a745 !important;
 }
@@ -74,5 +78,11 @@ p {
     #descripcion {
         border-left: none;
         border-top: var(--borde);
+    }
+}
+
+@media (max-width: 390px) {
+    #banner-texto h1 {
+        text-align: center;
     }
 }

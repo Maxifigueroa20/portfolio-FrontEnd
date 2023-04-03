@@ -1,1 +1,42 @@
-<p>modal-habilidad works!</p>
+<!--    Modal Habilidad    -->
+<div class="rounded" id="modal-container" *ngIf="modalMode === 'editar' || modalMode === 'agregar'">
+    <div class="modal-header">
+        <h4 *ngIf="modalMode === 'agregar'">Agregar Habilidad</h4>
+        <h4 *ngIf="modalMode === 'editar'">Editar Habilidad</h4>
+        <i class="bi bi-x-lg fs-5" (click)="cerrarModal()" aria-label="Close"></i>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="modalForm" (ngSubmit)="modalMode === 'editar' ? onEdit() : onCreate()">
+
+            <label for="titulo">Título:</label>
+            <input class="form-control mt-2" id="titulo" type="text" formControlName="tituloHabilidad" [ngClass]="{'is-invalid': Titulo?.errors && Titulo?.touched, 'is-valid': !Titulo?.errors && Titulo?.touched}">
+            <div><span class="text-danger" *ngIf="Titulo?.errors && Titulo?.touched">Ingrese un título válido</span></div>
+
+            <label class="mt-3 mb-2" for="porcentaje">Porcentaje: {{modalForm.value.porcentajeHabilidad}}%</label>
+            <input class="form-range" id="porcentaje" type="range" formControlName="porcentajeHabilidad">
+
+            <label class="mt-2" for="imagen">Imágen:</label>
+            <input class="form-control mt-2" id="imagen" type="url" formControlName="imagenHabilidad" [ngClass]="{'is-invalid': Imagen?.errors && Imagen?.touched, 'is-valid': !Imagen?.errors && Imagen?.touched}">
+            <div><span class="text-danger" *ngIf="Imagen?.errors && Imagen?.touched">Ingrese una imágen válida</span></div>
+
+            <div class="col d-grid gap-2 d-md-flex justify-content-md-around mt-3">
+                <button type="button" class="btn btn-danger flex-fill" (click)="cerrarModal()" aria-label="Close">Cancelar</button>
+                <button type="submit" class="btn flex-fill" id="modal-button" [ngClass]="{'btn-outline-primary': !modalForm.valid, 'btn-primary': modalForm.valid}" [disabled]="!modalForm.valid">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="rounded" id="modal-container" *ngIf="modalMode === 'borrar'">
+    <div class="modal-header">
+        <h4>Borrar Habilidad</h4>
+        <i class="bi bi-x-lg fs-5" (click)="cerrarModal()" aria-label="Close"></i>
+    </div>
+    <div class="modal-body">
+        <h6 class="mt-4">¿Desea borrar la Habilidad?</h6>
+        <div class="col d-grid gap-2 d-md-flex justify-content-md-around mt-5">
+            <button type="button" class="btn btn-danger flex-fill" (click)="cerrarModal()" aria-label="Close">Cancelar</button>
+            <button type="button" class="btn btn-primary flex-fill" (click)="onDelete()">Borrar</button>
+        </div>
+    </div>
+</div>

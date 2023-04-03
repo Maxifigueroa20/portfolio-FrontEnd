@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { ALPHANUMERIC_PATTERN, NUMBER_PATTERN, URL_PATTERN } from 'src/app/helpers/utils';
+import { ALPHANUMERIC_PATTERN, NUMBER_PATTERN, TITLE_PATTERN, URL_PATTERN } from 'src/app/helpers/utils';
 import { Proyecto } from 'src/app/model/proyecto';
 import { ProyectoService } from 'src/app/service/proyecto.service';
 
@@ -31,7 +31,8 @@ export class ModalProyectoComponent implements OnInit{
     private formBuilder: FormBuilder
   ) {
     this.modalForm = this.formBuilder.group({
-      tituloProyecto: [this.proyecto.tituloProyecto, [Validators.required, Validators.pattern(ALPHANUMERIC_PATTERN)]],
+      idProyecto: [this.proyecto.idProyecto],
+      tituloProyecto: [this.proyecto.tituloProyecto, [Validators.required, Validators.pattern(TITLE_PATTERN)]],
       fechaInicioProyecto: [this.proyecto.fechaInicioProyecto, [Validators.required, Validators.pattern(NUMBER_PATTERN)]],
       fechaFinProyecto: [this.proyecto.fechaFinProyecto, [Validators.required, Validators.pattern(NUMBER_PATTERN)]],
       descripcionProyecto: [this.proyecto.descripcionProyecto, [Validators.required, Validators.pattern(ALPHANUMERIC_PATTERN)]],
