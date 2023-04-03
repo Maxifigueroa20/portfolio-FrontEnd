@@ -1,0 +1,11 @@
+#login-banner {
+    background-image: url(https://i.ibb.co/VBLRJ98/full-earth-banner.jpg);
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100%;
+}
+
+#login-form {
+    background-color: rgba(0, 0, 0, 0.5);
+}

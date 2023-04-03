@@ -1,0 +1,34 @@
+<!--    Educacion    -->
+<div class="container rounded mb-5 pt-2" id="modulo">
+    <div class="row">
+        <div class="col d-flex justify-content-between">
+            <h3>Educaciones</h3>
+            <button type="button" class="btn btn-outline-primary mb-2" *ngIf="isAdmin" (click)="onCreate()">Agregar</button>
+        </div>
+    </div>
+    <div *ngFor="let educacion of educaciones">
+        <div class="row border-top border-white">
+            <div class="col-md-4 d-flex justify-content-center align-items-center py-4">
+                <img src={{educacion.imagenEducacion}} class="img-fluid" id="modulo-img" alt="educacion">
+            </div>
+            <div class="col-md-8 d-flex justify-content-center py-3 py-md-0 align-items-center" id="descripcion">
+                <div class="d-flex flex-column text-center">
+                    <span class="fw-bold mt-3">{{educacion.tituloEducacion}}</span>
+                    <span class="mt-3 ">{{educacion.fechaInicioEducacion}} ~ {{educacion.fechaFinEducacion}}</span>
+                    <span class="my-3">{{educacion.descripcionEducacion}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="isAdmin">
+            <div class="col d-grid gap-2 d-md-flex justify-content-md-around py-3" id="modulo-footer">
+                <button type="button" class="btn btn-outline-warning flex-fill" (click)="onEdit(educacion)">Editar</button>
+                <button type="button" class="btn btn-outline-danger flex-fill" (click)="onDelete(educacion.idEducacion)">Borrar</button>
+            </div>
+        </div>
+    </div>
+    <div class="row border-top border-light">
+        <div class="col d-flex justify-content-center py-5" *ngIf="educaciones.length === 0">
+            <h2>¡No hay educaciones aqui!</h2>
+        </div>
+    </div>
+</div>

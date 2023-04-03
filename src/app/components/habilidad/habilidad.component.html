@@ -1,0 +1,28 @@
+<!--    Habilidades    -->
+<div class="container rounded mb-5 pt-2" id="modulo">
+    <div class="row border-bottom border-white">
+        <div class="col d-flex justify-content-between">
+            <h3>Habilidades duras y blandas</h3>
+            <button type="button" class="btn btn-outline-primary mb-2" *ngIf="isAdmin" (click)="onCreate()">Agregar</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-4 col-xl-3 col-xxl-2 text-center pt-2 pb-3" *ngFor="let habilidad of habilidades">
+            <div class="d-flex flex-column">
+                <circle-progress
+                class="my-1"
+                [percent]="habilidad.porcentajeHabilidad"
+                [imageSrc]="habilidad.imagenHabilidad"
+                ></circle-progress>
+                <span>{{habilidad.tituloHabilidad}}: {{habilidad.porcentajeHabilidad}}%</span>
+                <div class="d-flex flex-row justify-content-around mt-3">
+                    <button type="button" class="btn btn-outline-warning" *ngIf="isAdmin" (click)="onEdit(habilidad)">Editar</button>
+                    <button type="button" class="btn btn-outline-danger" *ngIf="isAdmin" (click)="onDelete(habilidad.idHabilidad)">Borrar</button>
+                </div>
+            </div>
+        </div>
+        <div class="col d-flex justify-content-center py-5" *ngIf="habilidades.length === 0">
+            <h2>¡No hay habilidades aqui!</h2>
+        </div>
+    </div>
+</div>

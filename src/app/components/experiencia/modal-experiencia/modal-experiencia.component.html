@@ -1,0 +1,47 @@
+<!--    Modal Experiencia    -->
+<div class="rounded" id="modal-container" *ngIf="modalMode === 'editar' || modalMode === 'agregar'">
+    <div class="modal-header">
+        <h4 *ngIf="modalMode === 'agregar'">Agregar Experiencia</h4>
+        <h4 *ngIf="modalMode === 'editar'">Editar Experiencia</h4>
+        <i class="bi bi-x-lg fs-5" (click)="cerrarModal()" aria-label="Close"></i>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="modalForm" (ngSubmit)="modalMode === 'editar' ? onEdit() : onCreate()">
+
+            <label for="titulo">Título:</label>
+            <input class="form-control mt-2" id="titulo" type="text" formControlName="tituloExperiencia" [ngClass]="{'is-invalid': Titulo?.errors && Titulo?.touched, 'is-valid': !Titulo?.errors && Titulo?.touched}">
+            <div><span class="text-danger" *ngIf="Titulo?.errors && Titulo?.touched">Ingrese un título válido</span></div>
+
+            <label class="mt-2" for="fechaInicio">Fecha de inicio:</label>
+            <input class="form-control mt-2" id="fechaInicio" type="number" formControlName="fechaInicioExperiencia" [ngClass]="{'is-invalid': FechaInicio?.errors && FechaInicio?.touched, 'is-valid': !FechaInicio?.errors && FechaInicio?.touched}">
+            <div><span class="text-danger" *ngIf="FechaInicio?.errors && FechaInicio?.touched">Ingrese una fecha de inicio válida</span></div>
+            
+            <label class="mt-2" for="fecha">Fecha de fin:</label>
+            <input class="form-control mt-2" id="fechaFin" type="number" formControlName="fechaFinExperiencia" [ngClass]="{'is-invalid': FechaFin?.errors && FechaFin?.touched, 'is-valid': !FechaFin?.errors && FechaFin?.touched}">
+            <div><span class="text-danger" *ngIf="FechaFin?.errors && FechaFin?.touched">Ingrese una fecha válida</span></div>
+
+            <label class="mt-2" for="imagen">Imágen:</label>
+            <input class="form-control mt-2" id="imagen" type="url" formControlName="imagenExperiencia" [ngClass]="{'is-invalid': Imagen?.errors && Imagen?.touched, 'is-valid': !Imagen?.errors && Imagen?.touched}">
+            <div><span class="text-danger" *ngIf="Imagen?.errors && Imagen?.touched">Ingrese una imágen válida</span></div>
+
+            <div class="col d-grid gap-2 d-md-flex justify-content-md-around mt-3">
+                <button type="button" class="btn btn-danger flex-fill" (click)="cerrarModal()" aria-label="Close">Cancelar</button>
+                <button type="submit" class="btn flex-fill" id="modal-button" [ngClass]="{'btn-outline-primary': !modalForm.valid, 'btn-primary': modalForm.valid}" [disabled]="!modalForm.valid">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="rounded" id="modal-container" *ngIf="modalMode === 'borrar'">
+    <div class="modal-header">
+        <h4>Borrar Experiencia</h4>
+        <i class="bi bi-x-lg fs-5" (click)="cerrarModal()" aria-label="Close"></i>
+    </div>
+    <div class="modal-body">
+        <h6 class="mt-4">¿Desea borrar la experiencia?</h6>
+        <div class="col d-grid gap-2 d-md-flex justify-content-md-around mt-5">
+            <button type="button" class="btn btn-danger flex-fill" (click)="cerrarModal()" aria-label="Close">Cancelar</button>
+            <button type="button" class="btn btn-primary flex-fill" (click)="onDelete()">Borrar</button>
+        </div>
+    </div>
+</div>

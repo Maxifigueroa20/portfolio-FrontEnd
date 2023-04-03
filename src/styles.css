@@ -1,1 +1,88 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+    --borde: 1px solid white;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+}
+
+body {
+    background-color: black;
+}
+
+p, i, h1, h2, h3, h4, h6, hr, span, label {
+    color: white;
+}
+
+p {
+    line-height: 1.8;
+}
+
+#modulo {
+    border: var(--borde);
+}
+
+#modulo-img {
+    max-height: 80px;
+}
+
+#modulo-footer {
+    border-top: var(--borde);
+}
+
+#descripcion {
+    border-left: var(--borde);
+}
+
+#modal-container {
+    background-color: black;
+    border: var(--borde);
+}
+
+#modal-button {
+    transition: 0.5s ease-in-out;
+}
+
+.form-control {
+    background-color: inherit !important;
+    border: var(--borde);
+    color: white !important;
+}
+
+.form-range::-webkit-slider-runnable-track {
+    background-color: #242424 !important;
+}
+
+.is-valid {
+    border-color: #28a745 !important;
+}
+
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+
+.bi-x-lg {
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    #descripcion {
+        border-left: none;
+        border-top: var(--borde);
+    }
+}
+
+@media (max-width: 390px) {
+    #banner-texto h1 {
+        text-align: center;
+    }
+}
