@@ -1,27 +1,20 @@
-# PortfolioFrontEnd
+# 💻 Portfolio Front-End #YoProgramo
+En este repositorio se encuentra la capa Front-End de mi portfolio web realizado para el proyecto final integrador de la 2nda etapa de Argentina Programa: #YoProgramo 4ta edición.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.1.
+Para ver el repositorio de la capa **Back-End** [haz click aquí](https://github.com/Maxifigueroa20/portfolio-BackEnd).
 
-## Development server
+# 📝 Descripción del proyecto
+Desarrollo de la capa Front-End utilizando el framework de TypeScript: Angular, para crear una aplicación del tipo SPA o Single Page Application siguiendo el patrón de diseño MVC.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Se utilizó el lenguaje de marcado HTML para definir la estructura semántica de la aplicación y sus elementos y atributos. Tambien se utilizó el lenguaje de hojas de estilo CSS junto con su framework Bootstrap 5 para definir los estilos de los contenidos de la aplicacón.
 
-## Code scaffolding
+El portfolio es completamente visible sin necesidad de iniciar sesión en la aplicación, puedes visitarlo haciendo click [aquí](https://portfolio-frontend-305.web.app/) y luego apretando el botón de **Ingresar como Invitado**. Ahora simplemente debes esperar de 2 a 3 minutos para que se levante el servidor donde esta desplegado el Back-End y se pueda visibilizar el portfolio sin problemas.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# 🛠️ Tecnologías y Herramientas utilizadas
+* Angular
+* Bootstrap
+* CSS
+* Git
+* HTML
+* Node.js
+* TypeScript
